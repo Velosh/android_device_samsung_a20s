@@ -1,0 +1,11 @@
+# Device release name
+ro.display.series=Samsung Galaxy A20s
+
+# Bootdevice and product/board stuff
+ro.boot.bootdevice=7824900.sdhci
+ro.product.board=msm8953
+ro.board.platform=msm8953
+
+# USB and MTP stuff
+persist.sys.usb.config=mtp
+sys.usb.controller=7000000.dwc3

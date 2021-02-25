@@ -1,0 +1,35 @@
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+# Mount point       FS           Device               2nd Device                 Flags
+/boot               emmc         /dev/block/bootdevice/by-name/boot              flags=backup=1;display="Kernel Image";flashimg=1
+/dtbo               emmc         /dev/block/bootdevice/by-name/dtbo              flags=backup=1;display="DTBO Image";flashimg=1
+/recovery           emmc         /dev/block/bootdevice/by-name/recovery          flags=backup=1;display="Recovery Image";flashimg=1
+/system_image       emmc         /dev/block/bootdevice/by-name/system            flags=display="System Image";backup=1;flashimg=1
+/vendor_image       emmc         /dev/block/bootdevice/by-name/vendor            flags=display="Vendor Image";backup=1;flashimg=1
+/product_image      emmc         /dev/block/bootdevice/by-name/product           flags=display="Product Image";backup=1;flashimg=1
+/omr_image          emmc         /dev/block/bootdevice/by-name/omr               flags=display="OMR Image";backup=1;flashimg=1
+
+# System & Vendor Mount Point
+/system_root        ext4         /dev/block/bootdevice/by-name/system            flags=display="System";backup=1;wipeingui
+/vendor             ext4         /dev/block/bootdevice/by-name/vendor            flags=display="Vendor";backup=1;wipeingui
+/product            ext4         /dev/block/bootdevice/by-name/product           flags=display="Product";backup=1;wipeingui
+/omr                ext4         /dev/block/bootdevice/by-name/omr               flags=display="OMR";backup=1;wipeingui
+
+# ETC Moint Point
+/data               ext4         /dev/block/bootdevice/by-name/userdata
+/cache              ext4         /dev/block/bootdevice/by-name/cache             flags=display="Cache";backup=1;wipeingui
+
+# Persist Point
+/persist            ext4         /dev/block/bootdevice/by-name/persist           flags=display="Persist";backup=1
+/persist_image      emmc         /dev/block/bootdevice/by-name/persist           flags=display="Persist Image";backup=1;flashimg=1
+
+# Modem/EFS Mount Point (Combo)
+/efs                emmc         /dev/block/bootdevice/by-name/efs               flags=display="EFS";backup=1
+/modemst1           emmc         /dev/block/bootdevice/by-name/modemst1          flags=backup=1;subpartitionof=/efs
+/modemst2           emmc         /dev/block/bootdevice/by-name/modemst2          flags=backup=1;subpartitionof=/modemst1
+
+# SD Card & USB-OTG Points
+/external_sd        auto         /dev/block/mmcblk1p1  /dev/block/mmcblk1        flags=display="MicroSD Card";storage;wipeingui;removable
+/usb_otg            auto         /dev/block/sda1       /dev/block/sda            flags=display="USB-OTG";storage;wipeingui;removable
