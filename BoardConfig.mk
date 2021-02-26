@@ -143,7 +143,3 @@ TW_DEFAULT_BRIGHTNESS := 150
 # TWRP Configuration: Logd
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
-
-# PB Configuration: Treble/DM-Verity config
-PB_DISABLE_DEFAULT_TREBLE_COMP := true
-PB_DISABLE_DEFAULT_DM_VERITY := true
