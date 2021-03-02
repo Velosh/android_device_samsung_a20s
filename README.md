@@ -19,6 +19,21 @@ $ repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optim
 $ mv device/samsung/a20s/build_ofox.sh .; chmod +x build_ofox.sh; ./build_ofox.sh
 ```
 
+## Status
+
+**Works**
+
+- Booting
+- Zip/img flashing
+- ADB/MTP
+- Vibration
+- Backup/Restore
+- Mount
+
+**Don't Work**
+
+- Encryption
+
 ## Credits
 * mohammad92: For ```a11q``` device/kernel tree.
 * firemax13/sunamitheory: Helping me a lot.
