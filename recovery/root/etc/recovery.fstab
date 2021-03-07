@@ -29,7 +29,7 @@
 # Modem/EFS Mount Point (Combo)
 /efs                emmc         /dev/block/bootdevice/by-name/efs               flags=display="EFS";backup=1
 /modemst1           emmc         /dev/block/bootdevice/by-name/modemst1          flags=subpartitionof=/efs;backup=1
-/modemst2           emmc         /dev/block/bootdevice/by-name/modemst2          flags=subpartitionof=/modemst1;backup=1
+/modemst2           emmc         /dev/block/bootdevice/by-name/modemst2          flags=subpartitionof=/efs;backup=1
 
 # SD Card & USB-OTG Points
 /external_sd        auto         /dev/block/mmcblk1p1  /dev/block/mmcblk1        flags=display="MicroSD Card";storage;wipeingui;removable
