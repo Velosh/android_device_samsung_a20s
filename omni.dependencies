@@ -1,1 +1,7 @@
-[]
+[
+   {
+       "repository": "a2XX-dev/android_kernel_samsung_a20s",
+       "target_path": "kernel/samsung/a20s",
+       "branch": "sky"
+    }
+]
