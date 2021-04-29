@@ -14,18 +14,11 @@
 # limitations under the License.
 #
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+# TZData
+PRODUCT_PACKAGES += \
+    tzdata_twrp
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
-
-# Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/samsung/a20s/device.mk)
-
-## Device identifier. This must come after all inclusions
-PRODUCT_NAME := omni_a20s
-PRODUCT_DEVICE := a20s
-PRODUCT_MODEL := SM-A207M
-PRODUCT_BRAND := samsung
-PRODUCT_MANUFACTURER := samsung
+# android.hardware.fastboot
+PRODUCT_PACKAGES += \
+    fastbootd \
+    android.hardware.fastboot@1.0-impl-mock
