@@ -130,6 +130,7 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # TWRP Configuration: Basic config
+TW_HAS_DOWNLOAD_MODE := true
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
