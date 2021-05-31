@@ -24,10 +24,17 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
+service cleanMisc /system/bin/rebootsystem.sh
+    user root
+    group root
+    oneshot
+    disabled
+    seclabel u:r:recovery:s0
 
 on fs
     wait /dev/block/platform/soc/7824900.sdhci
     symlink /dev/block/platform/soc/7824900.sdhci /dev/block/bootdevice
+    start cleanMisc
 
     export ANDROID_ROOT /system_root
     export EXTERNAL_STORAGE /sdcard
