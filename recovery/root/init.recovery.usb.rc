@@ -51,7 +51,6 @@ on boot
     mkdir /config/usb_gadget/g1/functions/audio_source.gs3
     mkdir /config/usb_gadget/g1/functions/midi.gs5
     mkdir /config/usb_gadget/g1/functions/ffs.adb
-    mkdir /config/usb_gadget/g1/functions/ffs.fastboot
     mkdir /config/usb_gadget/g1/functions/diag.diag
     mkdir /config/usb_gadget/g1/functions/diag.diag_mdm
     mkdir /config/usb_gadget/g1/functions/cser.dun.0
@@ -83,8 +82,6 @@ on boot
     mkdir /dev/usb-ffs/adb 0770 shell system
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=1000,rmode=0770,fmode=0660
     write /sys/class/android_usb/android0/f_ffs/aliases adb
-    mkdir /dev/usb-ffs/fastboot 0770 shell system
-    mount functionfs fastboot /dev/usb-ffs/fastboot uid=2000,gid=1000,rmode=0770,fmode=0660
     setprop vendor.usb.controller ${sys.usb.controller}
 
 on property:ro.boot.usbcontroller=*
@@ -93,7 +90,6 @@ on property:ro.boot.usbcontroller=*
 on property:sys.usb.config=none
     write /config/usb_gadget/g1/UDC "none"
     stop adbd
-    stop fastbootd
     setprop sys.usb.ffs.ready 0
     write /config/usb_gadget/g1/bDeviceClass 0
     write /config/usb_gadget/g1/bDeviceSubClass 0
@@ -139,26 +135,5 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb
     write /config/usb_gadget/g1/idVendor 0x04E8
     write /config/usb_gadget/g1/idProduct 0x6860
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
-    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
-    setprop sys.usb.state ${sys.usb.config}
-
-on property:sys.usb.config=fastboot
-    start fastbootd
-
-on property:sys.usb.ffs.ready=1 && property:sys.usb.config=fastboot
-    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "fastboot"
-    rm /config/usb_gadget/g1/configs/b.1/f1
-    rm /config/usb_gadget/g1/configs/b.1/f2
-    rm /config/usb_gadget/g1/configs/b.1/f3
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rm /config/usb_gadget/g1/configs/b.1/f6
-    rm /config/usb_gadget/g1/configs/b.1/f7
-    rm /config/usb_gadget/g1/configs/b.1/f8
-    rm /config/usb_gadget/g1/configs/b.1/f9
-    write /config/usb_gadget/g1/idVendor 0x18d1
-    write /config/usb_gadget/g1/idProduct 0xd001
-    write /sys/class/android_usb/android0/f_ffs/aliases fastboot
-    symlink /config/usb_gadget/g1/functions/ffs.fastboot /config/usb_gadget/g1/configs/b.1/f1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
