@@ -17,11 +17,11 @@
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
+# Inherit additional product configuration
+$(call inherit-product, build/target/product/embedded.mk)
 
-# Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/samsung/a20s/device.mk)
+# Copy files inside recovery/root of a20s device tree
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/samsung/a20s/recovery/root,recovery/root)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_NAME := omni_a20s
