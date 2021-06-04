@@ -8,7 +8,7 @@ export LC_ALL="C"
 
 # TWRP/OFR flags (Common)
 export TW_DEFAULT_LANGUAGE="en"
-export FOX_VERSION="R11.0"
+export FOX_VERSION="R11.1"
 export FOX_R11="1"
 export TARGET_ARCH="arm64"
 export USE_CCACHE="1"
