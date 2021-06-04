@@ -15,26 +15,34 @@ export USE_CCACHE="1"
 
 # Device-specific flags
 export FOX_RECOVERY_INSTALL_PARTITION="/dev/block/bootdevice/by-name/recovery"
+export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/bootdevice/by-name/system"
+export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/bootdevice/by-name/vendor"
 export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR="1"
 export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER="1"
 export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES="0"
 export OF_DISABLE_MIUI_SPECIFIC_FEATURES="1"
 export OF_NO_TREBLE_COMPATIBILITY_CHECK="1"
+export OF_SKIP_MULTIUSER_FOLDERS_BACKUP="1"
 export LZMA_RAMDISK_TARGETS="recovery"
+export OF_TWRP_COMPATIBILITY_MODE="1"
+export OF_USE_SYSTEM_FINGERPRINT="1"
 export FOX_USE_LZMA_COMPRESSION="1"
-export FOX_REPLACE_BUSYBOX_PS="1"
-export OF_USE_TWRP_SAR_DETECT="1"
 export OF_STATUS_INDENT_RIGHT="34"
 export OF_STATUS_INDENT_LEFT="34"
+export FOX_REPLACE_BUSYBOX_PS="1"
+export OF_USE_TWRP_SAR_DETECT="1"
 export FOX_ADVANCED_SECURITY="1"
 export OF_FLASHLIGHT_ENABLE="0"
 export FOX_USE_NANO_EDITOR="1"
 export FOX_USE_BASH_SHELL="1"
+export FOX_USE_TAR_BINARY="1"
+export FOX_ASH_IS_BASH="1"
 export OF_SCREEN_H="2340"
+export OF_AB_DEVICE="0"
 
 # Build type && Maintainer flags
 export FOX_BUILD_TYPE="Stable"
-export OF_MAINTAINER="Durasame"
+export OF_MAINTAINER="Velosh"
 
 # Build Time
 source build/envsetup.sh
